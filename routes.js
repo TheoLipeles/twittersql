@@ -5,22 +5,39 @@ var tweetBank = require('./tweetbank');
 var fs = require('fs');
 var model = require('./models/');
 var User = model.User;
+var Tweet = model.Tweet;
 
 router.get('/', function(req, res, next) {
-  // res.json(tweetBank.list())
-  res.render('index', {
-    tweets: model.getAllTweets()
-  });
+  	// res.json(tweetBank.list())
+  	Tweet.findAll({include: [ User ]}).then(function(tweets) {
+  	  	res.render('index', {
+		    tweets: tweets
+		});
+  	});
+
 });
 
 router.post('/', function(req, res, next) {
-  tweetBank.add(req.body.name, req.body.tweet);
-  res.status(201).end();
+	var numUsers = 0;
+	User.findAll().then(function(users) {numUsers = users.length});
+	console.log(req.body);
+	User.findOne({where: {name: req.body.name}}).then(function(user) {
+		Tweet.create({tweet: req.body.tweet, UserId: user.id});
+	}).catch(function(e) {
+		User.create({name: req.body.name, id: numUsers + 1});
+		Tweet.create({tweet: req.body.tweet, UserId: numUsers + 1});
+	});
+  	res.status(201).end();
 });
 
 router.get('/users/:user', function(req, res, next) {
-  var tweets = tweetBank.find({ name: req.params.user });
-  res.render('index', { tweets: tweets });
+  	// var tweets = tweetBank.find({ name: req.params.user });
+  	User.findOne({where:{name:req.params.user}}).then(function(user){
+  		Tweet.findAll({where:{UserId:user.id}}).then(function(tweets){
+  			res.render('index', { tweets: tweets });		
+  		});
+  	});
+  	
 });
 
 // example without static file server
