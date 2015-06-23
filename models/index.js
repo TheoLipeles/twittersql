@@ -32,9 +32,13 @@ User.getTweets = function(userId) {
 };
 
 User.getUsers = function() {
+  var usrs = [];
   this.findAll().then(function(users) {
-    return users;
+    // console.log(users);
+    usrs = users;
+    // return users;
   });
+  return usrs;
 };
 
 module.exports = {
@@ -42,8 +46,11 @@ module.exports = {
     Tweet: Tweet,
     getAllTweets: function() {
       var tweets = [];
-      User.getUsers.forEach(function(user) {
+      User.getUsers().forEach(function(user) {
+        console.log(user);
         tweets.concat(User.getTweets(user.id));
       });
+      // console.log(tweets);
+      // return tweets;
     }
 };
