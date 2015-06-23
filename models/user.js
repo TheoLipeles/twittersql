@@ -8,5 +8,6 @@ module.exports = function(db) {
         timestamps: false  // this will deactivate the time columns
     });
 
+    
     return User;
 };

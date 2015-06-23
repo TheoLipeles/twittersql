@@ -46,28 +46,28 @@ Tweet.belongsTo(User);
 module.exports = {
   User: User,
   Tweet: Tweet,
-  getAllTweets: function() {
-    // Tweet.findOne({where: {id: 1}, attributes: ["tweet"]}).then(function(tweets) {
-    //   console.log(tweets);
-    // });
-    // Tweet.findAll({attributes: ["tweet"]}).then(function(tweets) {
-    //   // console.log(tweets);
-    //   return tweets.getTweets();
-    // }).then(function(tweet){
-    //   console.log(tweet);
-    // });
-    var tweets = [];
-    return User.findAll().each(function(user) {
-      tweets = tweets.concat(user.getTweets());
-    }).then(function(){
-      // console.log(tweets);
-      for (i = 0; i < tweets.length; i++) {
-        console.log(JSON.stringify(tweets[i]));
-        // tweets[i] = tweets[i].getDataValue("tweet");        
-      }
-      return tweets;
-    });
-  }
+  // getAllTweets: function() {
+  //   // Tweet.findOne({where: {id: 1}, attributes: ["tweet"]}).then(function(tweets) {
+  //   //   console.log(tweets);
+  //   // });
+  //   // Tweet.findAll({attributes: ["tweet"]}).then(function(tweets) {
+  //   //   // console.log(tweets);
+  //   //   return tweets.getTweets();
+  //   // }).then(function(tweet){
+  //   //   console.log(tweet);
+  //   // });
+  //   var tweets = [];
+  //   return User.findAll().each(function(user) {
+  //     tweets = tweets.concat(user.getTweets());
+  //   }).then(function(){
+  //     // console.log(tweets);
+  //     for (i = 0; i < tweets.length; i++) {
+  //       console.log(JSON.stringify(tweets[i]));
+  //       // tweets[i] = tweets[i].getDataValue("tweet");        
+  //     }
+  //     return tweets;
+  //   });
+  // }
 };
 
 

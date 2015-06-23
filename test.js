@@ -1,9 +1,9 @@
-var Tweet = require('./models/').Tweet;
+var User = require('./models/').User;
 
 
-Tweet.findById(1).then(function(Tweet) {
-	console.log(Tweet);
-    Tweet.getUsers().then(function(tweets) {
+User.findById(1).then(function(user) {
+	console.log(user);
+    user.getTweets().then(function(tweets) {
         console.log(tweets);
   });
 });

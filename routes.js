@@ -47,6 +47,7 @@ router.delete('/', function(req, res, next) {
 	res.status(204).end();
 });
 
+
 // example without static file server
 // router.get('/style.css', function(req, res) {
 //   fs.readFile('./public/style.css', function(err, contentBuffer) {
