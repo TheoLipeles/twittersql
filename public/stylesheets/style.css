@@ -42,6 +42,10 @@ code {
   font-size: 80%;
 }
 
+.col-md-9 {
+  padding-left: 30px;
+}
+
 .tweetbox {
   padding: 7px;
 }
@@ -67,4 +71,9 @@ ul{
 
 .navbar-brand {
   
+}
+
+#default {
+  height: 40px;
+  width: 40px;
 }
