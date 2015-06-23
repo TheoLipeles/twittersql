@@ -40,6 +40,13 @@ router.get('/users/:user', function(req, res, next) {
   	
 });
 
+router.delete('/', function(req, res, next) {
+	Tweet.findOne({where:{id:req.body.id}}).then(function(tweet){
+		tweet.destroy();
+	});
+	res.status(204).end();
+});
+
 // example without static file server
 // router.get('/style.css', function(req, res) {
 //   fs.readFile('./public/style.css', function(err, contentBuffer) {
