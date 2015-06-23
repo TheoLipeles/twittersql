@@ -50,7 +50,7 @@ module.exports = {
         console.log(user);
         tweets.concat(User.getTweets(user.id));
       });
-      // console.log(tweets);
-      // return tweets;
+      console.log(tweets);
+      return tweets;
     }
 };
